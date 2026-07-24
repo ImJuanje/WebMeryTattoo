@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mery Tattoo | Artista del Tatuaje - Elche & Tarazona de la Mancha</title>
+    <meta name="description" content="Mery Tattoo - Tatuadora profesional con +4 años de experiencia especializada en piezas medias y grandes. Elche (Alicante) y Tarazona de la Mancha (Albacete).">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --dark: #1a1a1a;
+            --gray: #888;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --accent: #d4af37;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            background: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .uppercase-spaced {
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+        }
+
+        .nav-left, .nav-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .logo-box {
+            width: 60px;
+            height: 60px;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        .logo-box:hover {
+            border-color: var(--accent);
+        }
+
+        .logo-box .logo-text {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .logo-box .logo-sub {
+            font-size: 7px;
+            letter-spacing: 0.1em;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+
+        .mobile-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu li {
+            margin: 25px 0;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('bannertattoo1.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-title {
+            font-size: 80px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            margin-bottom: 30px;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--white);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .hero-btn:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .hero-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .hero-arrow {
+            width: 50px;
+            height: 2px;
+            background: var(--white);
+            position: relative;
+            cursor: pointer;
+            pointer-events: all;
+            transition: var(--transition);
+        }
+
+        .hero-arrow::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid var(--white);
+            border-right: 2px solid var(--white);
+        }
+
+        .hero-arrow.left::before {
+            left: 0;
+            transform: rotate(-135deg);
+        }
+
+        .hero-arrow.right::before {
+            right: 0;
+            transform: rotate(45deg);
+        }
+
+        .hero-arrow:hover {
+            width: 70px;
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .hero-dot.active {
+            background: var(--white);
+        }
+
+        /* Values Section */
+        .values {
+            padding: 100px 40px;
+            background: var(--black);
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .value-title {
+            font-size: 20px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .value-text {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 300px;
+            margin: 0 auto 25px;
+            font-weight: 300;
+        }
+
+        .value-link {
+            display: inline-block;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .value-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .value-link:hover {
+            color: var(--accent);
+        }
+
+        .value-link:hover::after {
+            width: 100%;
+        }
+
+        /* ============================================ */
+        /* SHOWCASE SECTION - OPTIMIZADO UI/UX          */
+        /* ============================================ */
+        .showcase {
+            padding: 80px 16px;
+            background: var(--black);
+        }
+
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .showcase-subtitle {
+            font-size: 18px;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .showcase-title {
+            font-size: 32px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .showcase-description {
+            font-size: 13px;
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Grid principal con alturas controladas */
+        .showcase-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            grid-auto-rows: 180px;
+        }
+
+        /* Items individuales con aspect-ratio controlado */
+        .showcase-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--dark);
+            border-radius: 4px;
+            /* Altura fija para evitar que crezcan descontroladamente */
+            height: 100%;
+            min-height: 180px;
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: var(--transition);
+            filter: grayscale(100%);
+            /* Evita que la imagen se deforme */
+            display: block;
+        }
+
+        .showcase-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        /* Overlay con información al hover */
+        .showcase-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 15px 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .showcase-item:hover .showcase-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .showcase-overlay-text {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* Icono de zoom en el centro */
+        .showcase-zoom-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .showcase-item:hover .showcase-zoom-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .showcase-zoom-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--white);
+        }
+
+        /* ============================================ */
+        /* LIGHTBOX MODAL - Para ver imágenes grandes   */
+        /* ============================================ */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 900px;
+            max-height: 90vh;
+            width: 100%;
+        }
+
+        .lightbox-img {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 28px;
+            line-height: 1;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--white);
+            font-size: 18px;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--black);
+        }
+
+        .lightbox-prev {
+            left: -60px;
+        }
+
+        .lightbox-next {
+            right: -60px;
+        }
+
+        .lightbox-counter {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: var(--gray);
+            letter-spacing: 0.2em;
+        }
+
+        /* ============================================ */
+        /* RESPONSIVE - Mobile First mejorado           */
+        /* ============================================ */
+        
+        /* Móvil pequeño */
+        @media (max-width: 480px) {
+            .showcase {
+                padding: 60px 12px;
+            }
+
+            .showcase-title {
+                font-size: 26px;
+            }
+
+            .showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                grid-auto-rows: 160px;
+            }
+
+            .showcase-item {
+                min-height: 160px;
+            }
+
+            .lightbox-nav {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+
+            .lightbox-prev {
+                left: 5px;
+            }
+
+            .lightbox-next {
+                right: 5px;
+            }
+        }
+
+        /* Móvil grande / Tablet pequeño */
+        @media (min-width: 481px) and (max-width: 767px) {
+            .showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                grid-auto-rows: 200px;
+            }
+
+            .showcase-item {
+                min-height: 200px;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) {
+            header {
+                padding: 25px 60px;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 100px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .showcase {
+                padding: 100px 40px;
+            }
+
+            .showcase-title {
+                font-size: 42px;
+            }
+
+            /* Grid de 3 columnas en tablet */
+            .showcase-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                grid-auto-rows: 220px;
+            }
+
+            .showcase-item {
+                min-height: 220px;
+            }
+
+            .contact-info {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 120px;
+            }
+
+            /* Grid de 4 columnas en desktop con alturas variadas pero controladas */
+            .showcase-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+                grid-auto-rows: 240px;
+            }
+
+            .showcase-item {
+                min-height: 240px;
+            }
+
+            /* Variación sutil de alturas para dinamismo visual */
+            .showcase-item:nth-child(3n+1) {
+                grid-row: span 1;
+            }
+
+            .showcase-item:nth-child(3n+4) {
+                grid-row: span 1;
+            }
+
+            .showcase-item:nth-child(5n) {
+                grid-row: span 1;
+            }
+        }
+
+        /* Desktop grande */
+        @media (min-width: 1400px) {
+            .showcase-grid {
+                max-width: 1400px;
+                grid-auto-rows: 280px;
+            }
+
+            .showcase-item {
+                min-height: 280px;
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 40px;
+            background: var(--dark);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-subtitle {
+            font-size: 18px;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .contact-title {
+            font-size: 42px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+        }
+
+        .contact-item-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .contact-item-title {
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-item-text {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .contact-item-text a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item-text a:hover {
+            color: var(--accent);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            animation-delay: 0.2s;
+        }
+
+        .hero-title {
+            animation-delay: 0.4s;
+        }
+
+        .hero-description {
+            animation-delay: 0.6s;
+        }
+
+        .hero-btn {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-left">
+            <ul class="nav-menu">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#values">Sobre Mí</a></li>
+                <li><a href="#showcase">Portafolio</a></li>
+            </ul>
+        </div>
+        
+        <div class="logo-box">
+            <span class="logo-text">MERY</span>
+            <span class="logo-sub">TATTOO</span>
+        </div>
+        
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#showcase">Galería</a></li>
+                <li><a href="#values">Info</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" class="mobile-link">Inicio</a></li>
+            <li><a href="#values" class="mobile-link">Sobre Mí</a></li>
+            <li><a href="#showcase" class="mobile-link">Portafolio</a></li>
+            <li><a href="#contact" class="mobile-link">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle serif-italic">Tatuadora Profesional</p>
+            <h1 class="hero-title uppercase-spaced">MERY TATTOO</h1>
+            <p class="hero-description">
+                20 años | +4 años de experiencia<br>
+                Especializada en piezas medias y grandes<br>
+                Elche, Alicante & Tarazona de la Mancha, Albacete
+            </p>
+            <a href="#showcase" class="hero-btn">Ver Más</a>
+        </div>
+        
+        <div class="hero-arrows">
+            <div class="hero-arrow left"></div>
+            <div class="hero-arrow right"></div>
+        </div>
+        
+        <div class="hero-dots">
+            <div class="hero-dot active"></div>
+            <div class="hero-dot"></div>
+            <div class="hero-dot"></div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values" id="values">
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">
+                    <img src="bannertattoo1.jpg" alt="Arte">
+                </div>
+                <h3 class="value-title">Arte</h3>
+                <p class="value-text">
+                    Cada tatuaje es una obra de arte única, cuidadosamente diseñada para reflejar tu personalidad e historia. 
+                    Especializada en piezas medias y grandes que requieren precisión y visión artística.
+                </p>
+                <a href="#showcase" class="value-link">Leer Más</a>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">
+                    <img src="https://image.qwenlm.ai/public_source/7611f01e-1143-4ec7-afc3-47016bf4f342/1509c709f-e29d-4ba6-b5b3-76bc64c85e72.png" alt="Dedicación">
+                </div>
+                <h3 class="value-title">Dedicación</h3>
+                <p class="value-text">
+                    Con más de 4 años de experiencia dedicada, aporto pasión y compromiso en cada sesión. 
+                    Tu satisfacción y comodidad son mis principales prioridades.
+                </p>
+                <a href="#contact" class="value-link">Leer Más</a>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">
+                    <img src="https://image.qwenlm.ai/public_source/7611f01e-1143-4ec7-afc3-47016bf4f342/151cd16f7-1e71-480b-a830-d78e29ae7d29.png" alt="Pasión">
+                </div>
+                <h3 class="value-title">Pasión</h3>
+                <p class="value-text">
+                    Con solo 20 años, he encontrado mi vocación creando tatuajes con significado. 
+                    Basada en Elche (Alicante) y Tarazona de la Mancha (Albacete), atendiendo clientes en toda la zona.
+                </p>
+                <a href="#contact" class="value-link">Leer Más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section - OPTIMIZADO -->
+    <section class="showcase" id="showcase">
+        <div class="showcase-header">
+            <p class="showcase-subtitle serif-italic">Descubre mi</p>
+            <h2 class="showcase-title uppercase-spaced">Portafolio</h2>
+            <p class="showcase-description">
+                Una colección de piezas medias y grandes que muestran detalle, precisión y visión artística. 
+                Cada tatuaje cuenta una historia única.
+            </p>
+        </div>
+        
+        <div class="showcase-grid">
+            <div class="showcase-item" data-index="0">
+                <img src="./sources/tattoo1.jpg" alt="Tatuaje de espalda" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="1">
+                <img src="./sources/tatoo2.jpg" alt="Tatuaje de brazo" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="2">
+                <img src="./sources/tattoo3.jpg" alt="Tatuaje de pierna" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="3">
+                <img src="./sources/tattoo4.jpeg" alt="Tatuaje de pecho" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="4">
+                <img src="./sources/tattoo5.jpeg" alt="Tatuaje de espalda" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="5">
+                <img src="./sources/tattoo6.jpeg" alt="Tatuaje de hombro" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="6">
+                <img src="./sources/tattoo7.jpeg" alt="Tatuaje de brazo" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="7">
+                <img src="./sources/tattoo8.jpg" alt="Tatuaje de manga" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+            <div class="showcase-item" data-index="8">
+                <img src="./sources/tattoo9.jpg" alt="Tatuaje de pierna" loading="lazy">
+                <div class="showcase-zoom-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="11" y1="8" x2="11" y2="14"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <div class="showcase-overlay">
+                    <span class="showcase-overlay-text">Ver detalle</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+            <img src="" alt="" class="lightbox-img" id="lightboxImg">
+            <div class="lightbox-counter" id="lightboxCounter"></div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <p class="contact-subtitle serif-italic">Ponte en contacto</p>
+            <h2 class="contact-title uppercase-spaced">Contacto</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-item-title">Teléfono</h3>
+                    <p class="contact-item-text">
+                        <a href="tel:+34655318866">+34 655 31 88 66</a>
+                    </p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-item-title">Ubicaciones</h3>
+                    <p class="contact-item-text">
+                        Elche, Alicante<br>
+                        Tarazona de la Mancha, Albacete
+                    </p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-item-title">Experiencia</h3>
+                    <p class="contact-item-text">
+                        20 años<br>
+                        +4 años de experiencia profesional
+                    </p>
+                </div>
+            </div>
+            
+            <a href="https://wa.me/34655318866?text=Hola%20Mery,%20quiero%20información%20sobre%20un%20tatuaje" class="contact-btn">Reserva tu Cita</a>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Mery Tattoo</div>
+            <p class="footer-text">© 2026 Mery Tattoo. Todos los derechos reservados.</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/merytattoos_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/34655318866?text=Hola%20Mery,%20quiero%20información%20sobre%20un%20tatuaje" aria-label="WhatsApp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Hero dots interaction
+        const dots = document.querySelectorAll('.hero-dot');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+
+        // Hero arrows interaction
+        const arrows = document.querySelectorAll('.hero-arrow');
+        arrows.forEach((arrow, index) => {
+            arrow.addEventListener('click', () => {
+                const currentActive = document.querySelector('.hero-dot.active');
+                const currentIndex = Array.from(dots).indexOf(currentActive);
+                let nextIndex;
+                
+                if (index === 0) {
+                    nextIndex = currentIndex > 0 ? currentIndex - 1 : dots.length - 1;
+                } else {
+                    nextIndex = currentIndex < dots.length - 1 ? currentIndex + 1 : 0;
+                }
+                
+                dots.forEach(d => d.classList.remove('active'));
+                dots[nextIndex].classList.add('active');
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.value-item, .showcase-item, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // ============================================
+        // LIGHTBOX - Galería interactiva
+        // ============================================
+        const showcaseItems = document.querySelectorAll('.showcase-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        let currentIndex = 0;
+        const totalImages = showcaseItems.length;
+
+        // Abrir lightbox
+        showcaseItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                openLightbox(currentIndex);
+            });
+        });
+
+        function openLightbox(index) {
+            const img = showcaseItems[index].querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCounter.textContent = `${index + 1} / ${totalImages}`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            openLightbox(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            openLightbox(currentIndex);
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextImage();
+        });
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevImage();
+        });
+
+        // Cerrar al hacer click fuera de la imagen
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Swipe en móvil para el lightbox
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextImage();
+                else prevImage();
+            }
+        }
+    </script>
+</body>
+</html>
